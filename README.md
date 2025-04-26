@@ -50,6 +50,29 @@ To update to the latest compatible version:
 npm update @prodi-labs/schemas
 ```
 
+### Publishing
+
+To publish a new version of this package:
+
+1. Make your changes to the schema files
+2. Run one of the following commands depending on the type of update:
+
+```bash
+# For bug fixes and patches (1.0.x)
+npm run publish:patch
+
+# For new features (1.x.0)
+npm run publish:minor
+
+# For breaking changes (x.0.0)
+npm run publish:major
+```
+
+These commands will automatically:
+- Increment the version number
+- Build the package
+- Publish to npm
+
 ### Validation
 
 All schemas are built with [Zod](https://github.com/colinhacks/zod) for runtime type validation.
