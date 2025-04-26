@@ -32,13 +32,19 @@ See the dedicated documentation pages for detailed schema information.
 
 ### Installation
 
-To use these schemas in your project, install the package directly from GitHub:
+To use these schemas in your project, install the package from npm:
 
 ```bash
-npm install @prodi-labs/schemas@github:prodi-labs/schemas
+npm install @prodi-labs/schemas
 ```
 
-To update to the latest version, use:
+You can also install a specific version:
+
+```bash
+npm install @prodi-labs/schemas@1.0.9
+```
+
+To update to the latest compatible version:
 
 ```bash
 npm update @prodi-labs/schemas
@@ -51,55 +57,12 @@ All schemas are built with [Zod](https://github.com/colinhacks/zod) for runtime 
 To use these schemas in your code:
 
 ```typescript
-import { EpisodeRequestSchema } from 'schemas/api/createEpisode.schema';
+import { EpisodeRequestSchema } from '@prodi-labs/schemas/api/createEpisode.schema';
 
-// Validate data
 const result = EpisodeRequestSchema.safeParse(data);
 if (result.success) {
-  // Data is valid
   const validData = result.data;
 } else {
-  // Handle validation errors
   console.error(result.error);
 }
 ```
-
-### Example: Working with Episode Schema
-
-```typescript
-import { episodeSchema, type EpisodeSchema } from 'schemas/model/episode.schema';
-
-// Validate a complete episode
-const episodeData = {
-  metadata: {
-    title: "My Podcast Episode",
-    createdAt: "2023-04-15T12:00:00Z",
-    intro: "https://example.com/audio/intro.mp3",
-    outro: "https://example.com/audio/outro.mp3",
-    transition: "https://example.com/audio/transition.mp3",
-    labels: ["tech", "AI"]
-  },
-  sections: [
-    {
-      order: 1,
-      title: "Introduction",
-      dialogues: [
-        {
-          text: "Welcome to our podcast!",
-          delay: 0.5,
-          voice: "Liam",
-          voiceId: "voice-123",
-          audioUrl: "https://example.com/audio/dialogue1.mp3"
-        }
-      ]
-    }
-  ]
-};
-
-// Validate episode data
-const result = episodeSchema.safeParse(episodeData);
-if (result.success) {
-  const validEpisode: EpisodeSchema = result.data;
-  // Process the valid episode
-}
-``` 
