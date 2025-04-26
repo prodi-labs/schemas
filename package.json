@@ -1,14 +1,11 @@
 {
-  "name": "schemas",
-  "version": "1.0.8",
+  "name": "@prodi-labs/schemas",
+  "version": "1.0.9",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build",
-    "deploy": "./deploy.sh",
-    "postinstall": "npm run build"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
