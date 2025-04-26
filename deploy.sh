@@ -6,8 +6,8 @@ npm install
 # Build the package
 npm run build
 
-# Get the new version after incrementing
-NEW_VERSION=$(npm version patch)
+# Get the new version after incrementing (using --force to bypass the clean working directory check)
+NEW_VERSION=$(npm version patch --force)
 
 # Commit only the package.json file with the version change
 #git add package.json
