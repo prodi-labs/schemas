@@ -13,6 +13,10 @@ A collection of Zod schemas for validating data structures used in the Prodi app
 ### Model Schemas
 - **Voice Schema** - Validates voice properties like language, name, service, etc.
 - **Episode Schema** - Defines podcast episodes with dialogues, sections, and metadata
+  - `dialogueSchema` - Validates dialogue properties (text, delay, voice, etc.)
+  - `sectionSchema` - Validates episode sections containing dialogues
+  - `episodeMetadataSchema` - Validates episode metadata (title, timestamps, audio files)
+  - `episodeSchema` - Complete episode structure with metadata and sections
 
 ### API Schemas
 - **Create Episode** - Validates requests to create new episodes
@@ -51,5 +55,45 @@ if (result.success) {
 } else {
   // Handle validation errors
   console.error(result.error);
+}
+```
+
+### Example: Working with Episode Schema
+
+```typescript
+import { episodeSchema, type EpisodeSchema } from 'schemas/model/episode.schema';
+
+// Validate a complete episode
+const episodeData = {
+  metadata: {
+    title: "My Podcast Episode",
+    createdAt: "2023-04-15T12:00:00Z",
+    intro: "https://example.com/audio/intro.mp3",
+    outro: "https://example.com/audio/outro.mp3",
+    transition: "https://example.com/audio/transition.mp3",
+    labels: ["tech", "AI"]
+  },
+  sections: [
+    {
+      order: 1,
+      title: "Introduction",
+      dialogues: [
+        {
+          text: "Welcome to our podcast!",
+          delay: 0.5,
+          voice: "Liam",
+          voiceId: "voice-123",
+          audioUrl: "https://example.com/audio/dialogue1.mp3"
+        }
+      ]
+    }
+  ]
+};
+
+// Validate episode data
+const result = episodeSchema.safeParse(episodeData);
+if (result.success) {
+  const validEpisode: EpisodeSchema = result.data;
+  // Process the valid episode
 }
 ``` 

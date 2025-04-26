@@ -25,8 +25,12 @@ export const episodeMetadataSchema = z.object({
   labels: z.array(z.string()).describe("Array of labels/tags for the episode")
 });
 
-
+export const episodeSchema = z.object({
+  metadata: episodeMetadataSchema.describe("Metadata information about the episode"),
+  sections: z.array(sectionSchema).describe("List of sections that make up the episode")
+});
 
 export type Dialogue = z.infer<typeof dialogueSchema>;
 export type Section = z.infer<typeof sectionSchema>;
 export type EpisodeMetadata = z.infer<typeof episodeMetadataSchema>;
+export type EpisodeSchema = z.infer<typeof episodeSchema>;
