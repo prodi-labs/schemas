@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { sectionSchema } from "../storage/episode.schema.js";
+import { sectionSchema } from "../model/episode.schema.js";
 
 
 export const SaveEpisodeRequestSchema = z.object({
