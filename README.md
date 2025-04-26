@@ -35,7 +35,13 @@ See the dedicated documentation pages for detailed schema information.
 To use these schemas in your project, install the package directly from GitHub:
 
 ```bash
-npm install git+https://github.com/prodi-labs/schemas.git
+npm install @prodi-labs/schemas@github:prodi-labs/schemas
+```
+
+To update to the latest version, use:
+
+```bash
+npm update @prodi-labs/schemas
 ```
 
 ### Validation

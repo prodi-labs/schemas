@@ -7,7 +7,6 @@ NEW_VERSION=$(npm version patch)
 git add package.json
 git commit -m "increased version to ${NEW_VERSION}"
 
-# Push the changes and tags
 git push 
 
 echo "Successfully released version ${NEW_VERSION}" 
