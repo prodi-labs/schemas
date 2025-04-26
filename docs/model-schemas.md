@@ -5,7 +5,9 @@
 ## Voice Schema
 - **File:** `model/voice.schema.ts`
 - **Purpose:** Defines the structure for voice data
-- **Main Schema:** `storageVoiceSchema` - Validates voice properties like language, name, service, etc.
+- **Main Schemas:** 
+  - `storageVoiceSchema` - Basic voice properties like language, name, service, etc.
+  - `voiceSchema` - Extends storageVoiceSchema by adding a voiceId field
 
 ### Schema Properties
 
@@ -16,6 +18,10 @@ export const storageVoiceSchema = z.object({
     service: z.string(),
     serviceVoiceId: z.string(),
     volume: z.number()
+});
+
+export const voiceSchema = storageVoiceSchema.extend({
+    voiceId: z.string()
 });
 ```
 
