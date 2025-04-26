@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Ensure dependencies are installed
+npm install
+
+# Build the package
+npm run build
+
 # Get the new version after incrementing
 NEW_VERSION=$(npm version patch)
 
