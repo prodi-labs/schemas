@@ -5,7 +5,7 @@ export const projectRequestSchema = z.object({
     .string()
     .min(1, "Project name is required")
     .describe("Name of the project"),
-  hostsId: z
+  voiceIds: z
     .array(z.string())
     .min(2, "At least 2 host voice IDs are required")
     .describe("Array of voice IDs for the project hosts"),
