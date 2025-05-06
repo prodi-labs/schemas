@@ -11,19 +11,27 @@ A collection of Zod schemas for validating data structures used in the Prodi app
 ## Quick Reference
 
 ### Model Schemas
+
 - **Voice Schema** - Validates voice properties like language, name, service, etc.
 - **Episode Schema** - Defines podcast episodes with dialogues, sections, and metadata
   - `dialogueSchema` - Validates dialogue properties (text, delay, voice, etc.)
   - `sectionSchema` - Validates episode sections containing dialogues
   - `episodeMetadataSchema` - Validates episode metadata (title, timestamps, audio files)
   - `episodeSchema` - Complete episode structure with metadata and sections
+- **Project Schema** - Defines project data structure with name, hosts, and agent information
+  - `projectRequestSchema` - Validates project creation/update request data
+  - `projectSchema` - Complete project structure with ID and required fields
+  - `projectsListSchema` - Validates a list of projects
 
 ### API Schemas
+
 - **Create Episode** - Validates requests to create new episodes
 - **Save Episode** - Validates requests to save episode data
 - **Delete Episode** - Validates requests to delete episodes
+- **Projects API** - Consolidated schemas for project-related endpoints (create, get, update, delete)
 
 ### Service Schemas
+
 - **Episode LLM** - Defines structures for LLM-generated episode content
 
 See the dedicated documentation pages for detailed schema information.
@@ -69,6 +77,7 @@ npm run publish:major
 ```
 
 These commands will automatically:
+
 - Increment the version number
 - Build the package
 - Publish to npm
@@ -80,7 +89,7 @@ All schemas are built with [Zod](https://github.com/colinhacks/zod) for runtime 
 To use these schemas in your code:
 
 ```typescript
-import { EpisodeRequestSchema } from '@prodi-labs/schemas/api/createEpisode.schema';
+import { EpisodeRequestSchema } from "@prodi-labs/schemas/api/createEpisode.schema";
 
 const result = EpisodeRequestSchema.safeParse(data);
 if (result.success) {
