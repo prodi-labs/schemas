@@ -19,6 +19,9 @@ export const projectSchema = projectRequestSchema.extend({
   id: z.string().describe("Unique identifier of the project"),
 });
 
+export const projectsRequestListSchema = z
+  .array(projectRequestSchema)
+  .describe("List of projects");
 export const projectsListSchema = z
   .array(projectSchema)
   .describe("List of projects");
@@ -26,3 +29,4 @@ export const projectsListSchema = z
 export type ProjectRequest = z.infer<typeof projectRequestSchema>;
 export type Project = z.infer<typeof projectSchema>;
 export type ProjectsList = z.infer<typeof projectsListSchema>;
+export type ProjectsRequestList = z.infer<typeof projectsRequestListSchema>;
