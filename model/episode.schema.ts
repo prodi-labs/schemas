@@ -66,15 +66,13 @@ export const episodeRequestSchema = z.object({
     .describe("ISO date string for scheduled publication"),
 });
 
-export const episodeStoreSchema = episodeRequestSchema.extend({
+export const episodeRecordSchema = episodeRequestSchema.extend({
   updatedAt: z
     .string()
-    .describe(
-      "Server-generated timestamp of when the episode was last updated"
-    ),
+    .describe("ISO date string of when the episode was last updated"),
 });
 
-export const episodeSchema = episodeStoreSchema.extend({
+export const episodeSchema = episodeRecordSchema.extend({
   id: z.string().describe("Unique identifier of the episode"),
 });
 
@@ -94,7 +92,7 @@ export type EpisodeLLMResponse = z.infer<typeof episodeLLMResponseSchema>;
 // New types based on the API documentation
 export type Status = z.infer<typeof statusSchema>;
 export type EpisodeRequest = z.infer<typeof episodeRequestSchema>;
-export type EpisodeStore = z.infer<typeof episodeStoreSchema>;
+export type EpisodeRecord = z.infer<typeof episodeRecordSchema>;
 export type Episode = z.infer<typeof episodeSchema>;
 export type EpisodeRequestList = z.infer<typeof episodeRequestListSchema>;
 export type EpisodeList = z.infer<typeof episodeListSchema>;
