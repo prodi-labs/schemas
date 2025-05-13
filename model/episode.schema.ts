@@ -62,7 +62,7 @@ export const episodeRequestSchema = z.object({
     .describe("Array of status transitions with timestamps"),
   publicationDate: z
     .string()
-    .optional()
+    .min(1, "Publication date is required")
     .describe("ISO date string for scheduled publication"),
 });
 
