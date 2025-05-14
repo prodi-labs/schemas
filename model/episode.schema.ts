@@ -59,7 +59,6 @@ export const episodeRequestSchema = z.object({
     .describe("Name or title of the episode"),
   status: z
     .array(statusSchema)
-    .default([])
     .describe("Array of status transitions with timestamps"),
   publishBy: isoDateString().describe(
     "ISO date string of when the episode was last updated"
