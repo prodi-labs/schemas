@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { isoDateString } from "../utils/dateValidator.js";
 
 export const dialogueSchema = z.object({
   text: z.string().describe("The spoken text content of the dialogue"),
@@ -46,9 +47,9 @@ export const episodeLLMResponseSchema = z.object({
 
 export const statusSchema = z.object({
   state: z.string().describe("The status name"),
-  timestamp: z
-    .string()
-    .describe("ISO date string of when the episode entered this state"),
+  timestamp: isoDateString().describe(
+    "ISO date string of when the episode entered this state"
+  ),
 });
 
 export const episodeRequestSchema = z.object({
@@ -60,16 +61,15 @@ export const episodeRequestSchema = z.object({
     .array(statusSchema)
     .default([])
     .describe("Array of status transitions with timestamps"),
-  publicationDate: z
-    .string()
-    .min(1, "Publication date is required")
-    .describe("ISO date string for scheduled publication"),
+  publishBy: isoDateString().describe(
+    "ISO date string of when the episode was last updated"
+  ),
 });
 
 export const episodeRecordSchema = episodeRequestSchema.extend({
-  updatedAt: z
-    .string()
-    .describe("ISO date string of when the episode was last updated"),
+  updatedAt: isoDateString().describe(
+    "ISO date string of when the episode was last updated"
+  ),
 });
 
 export const episodeSchema = episodeRecordSchema.extend({

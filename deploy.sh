@@ -27,7 +27,7 @@ NEW_VERSION=$(node -p "require('./package.json').version")
 echo "Published version ${NEW_VERSION}"
 
 # Commit the version change
-git add package.json package-lock.json
+git add *
 git commit -m "chore: bump version to ${NEW_VERSION}"
 
 # Create tag manually

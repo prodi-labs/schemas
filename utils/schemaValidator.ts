@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export class ResponseParser {
   private static validateSchema<T>(data: unknown, schema: z.ZodSchema<T>): T {
@@ -6,7 +6,9 @@ export class ResponseParser {
 
     if (!parsed.success) {
       const formattedError = parsed.error.format();
-      throw new Error(`Response validation failed: ${JSON.stringify(formattedError)}`);
+      throw new Error(
+        `Response validation failed: ${JSON.stringify(formattedError)}`
+      );
     }
 
     return parsed.data;
@@ -31,4 +33,4 @@ export class ResponseParser {
       throw error;
     }
   }
-} 
+}

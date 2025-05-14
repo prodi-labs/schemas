@@ -1,11 +1,13 @@
-
 // createEpisode.schema.ts
 import { z } from "zod";
 
 export const EpisodeRequestSchema = z.object({
   script: z.string().min(1, "Script is required"),
   podcastTitle: z.string().min(1, "Podcast title is required"),
-  labels: z.array(z.string()).default([]).describe("Optional labels for the episode"),
+  labels: z
+    .array(z.string())
+    .default([])
+    .describe("Optional labels for the episode"),
   sounds: z.object({
     intro: z.string().min(1, "Intro sound is required"),
     outro: z.string().min(1, "Outro sound is required"),
