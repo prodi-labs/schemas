@@ -44,6 +44,7 @@ export const llmEpisodeResponseSchema = z.object({
     ),
 });
 
+export type EpisodeScript = z.infer<typeof episodeScriptSchema>;
 export type LlmDialogueResponse = z.infer<typeof llmDialogueResponseSchema>;
 export type LlmSectionResponse = z.infer<typeof llmSectionResponseSchema>;
 export type LlmEpisodeResponse = z.infer<typeof llmEpisodeResponseSchema>;
