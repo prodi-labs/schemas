@@ -1,11 +1,8 @@
 import { z } from "zod";
-import {
-  DialogueSchema,
-  SectionRecordSchema,
-} from "../model/section.schema.js";
+import { DialogueSchema, SectionSchema } from "../model/section.schema.js";
 
 export const GenScriptRequestSchema = z.object({
-  sections: z.array(SectionRecordSchema),
+  sections: z.array(SectionSchema),
   userInstructions: z.string(),
 });
 
