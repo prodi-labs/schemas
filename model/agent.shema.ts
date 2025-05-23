@@ -27,7 +27,7 @@ export const agentRecordSchema = z.object({
     .string()
     .min(1, "System instructions are required")
     .describe("System instructions for the agent"),
-  context: agentContextSchema.optional().describe("Optional agent context"),
+  context: agentContextSchema.describe("Agent context"),
 });
 
 export const agentSchema = agentRecordSchema.extend({
