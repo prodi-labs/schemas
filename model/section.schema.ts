@@ -16,6 +16,7 @@ export const SectionLabel = z.enum([
 ]);
 
 export const DialogueSchema = z.object({
+  id: z.string(),
   text: z.string(),
   voiceId: z.string(),
   audioUrl: z.string().url().nullable(),

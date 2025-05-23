@@ -35,7 +35,7 @@ export const UpdateSectionRequestSchema = SectionSchema;
 // Bulk Update Sections
 export const BulkUpdateSectionsParamsSchema = SectionBaseParamsSchema;
 export const BulkUpdateSectionsRequestSchema = z.object({
-  sections: z.array(SectionSchema),
+  sections: z.array(UpdateSectionRequestSchema),
 });
 
 // Delete Section
